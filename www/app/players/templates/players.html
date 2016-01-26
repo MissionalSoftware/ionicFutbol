@@ -1,0 +1,8 @@
+<ion-view view-title="Players">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="player in vm.players" ui-sref="app.playerDetail({ playerId: player.id})"><p>{{player.name}}</p></ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>
