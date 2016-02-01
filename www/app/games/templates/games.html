@@ -1,5 +1,9 @@
 <ion-view view-title="Games">
   <ion-content>
-    <h1>Games</h1>
+    <ion-list>
+      <ion-item ng-repeat="game in vm.games" ui-sref="app.gameDetail({ gameId: game.id })">
+        <ion-nav-view name="gameInfo"></ion-nav-view>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

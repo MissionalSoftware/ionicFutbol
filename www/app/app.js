@@ -36,7 +36,31 @@ angular.module('futbol', ['ionic'])
     url: '/games',
     views: {
       'menuContent': {
-        templateUrl: 'app/games/templates/games.html'
+        templateUrl: 'app/games/templates/games.html',
+        controller: 'gamesCtrl',
+        controllerAs: 'vm'
+      }
+    }
+  })
+  .state('app.games.item', {
+    url: '/item/:gameId',
+    views: {
+      'gameInfo': {
+        templateUrl: function(){
+
+        },
+        controller: 'gameItemCtrl',
+        controllerAs: 'vm'
+      }
+    }
+  })
+  .state('app.gameDetail', {
+    url: '/gameDetail/:gameId',
+    views: {
+      'menuContent': {
+        templateUrl: 'app/games/templates/gameAddEdit.html',
+        controller: 'gameDetailCtrl',
+        controllerAs: 'vm'
       }
     }
   })
@@ -45,7 +69,7 @@ angular.module('futbol', ['ionic'])
     views: {
       'menuContent': {
         templateUrl: 'app/players/templates/players.html',
-        controller: 'playerCtrl',
+        controller: 'playersCtrl',
         controllerAs: 'vm'
       }
     }

@@ -41,7 +41,7 @@ angular.module('futbol')
   };
 })
 
-.controller('playerCtrl', function($scope, Players) {
+.controller('playersCtrl', function($scope, Players) {
   var vm = this;
   vm.players = Players.all();
 })
@@ -49,4 +49,14 @@ angular.module('futbol')
 .controller('playerDetailCtrl', function(Players, $stateParams){
   var vm = this;
   vm.player = Players.get($stateParams.playerId);
+})
+
+.controller('gamesCtrl', function($scope, Games) {
+  var vm = this;
+  vm.games = Games.all();
+})
+
+.controller('gameDetailCtrl', function(Games, $stateParams) {
+  var vm = this;
+  vm.game = Games.get($stateParams.gameId)
 });

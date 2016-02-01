@@ -1,0 +1,13 @@
+<ion-view view-title="Add/Edit Game">
+  <ion-content>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Name</span>
+      <input type="text" placeholder="Name" ng-model="vm.game.name">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Date</span>
+      <input type="datetime" placeholder="Game Date" ng-model="vm.game.date">
+    </label>
+    <button class="button button-balanced" ui-sref="app.gameDuring({ gameId : game.id})">Start</button>
+  </ion-content>
+</ion-view>
