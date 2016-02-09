@@ -1,8 +1,8 @@
 <ion-view view-title="Games">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="game in vm.games" ui-sref="app.gameDetail({ gameId: game.id })">
-        <ion-nav-view name="gameInfo"></ion-nav-view>
+      <ion-item collection-repeat="game in vm.games" ng-click="vm.addEditGame(game.id)">
+        {{vm.localeDate(game.date)}} - {{game.name}}
       </ion-item>
     </ion-list>
   </ion-content>

@@ -42,18 +42,6 @@ angular.module('futbol', ['ionic'])
       }
     }
   })
-  .state('app.games.item', {
-    url: '/item/:gameId',
-    views: {
-      'gameInfo': {
-        templateUrl: function(){
-
-        },
-        controller: 'gameItemCtrl',
-        controllerAs: 'vm'
-      }
-    }
-  })
   .state('app.gameDetail', {
     url: '/gameDetail/:gameId',
     views: {
