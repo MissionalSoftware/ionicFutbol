@@ -1,35 +1,42 @@
 <ion-view view-title="Add/Edit Game">
   <ion-content>
-    <label class="item item-input item-floating-label">
-      <span class="input-label">Name</span>
-      <input type="text" placeholder="Name" ng-model="vm.game.name">
-    </label>
-    <label class="item item-input item-floating-label" pick-a-date="date">
-      <span class="input-label">Date</span>
-      <input type="text" placeholder="Game Date" ng-model="vm.game.date">{{date}}
-    </label>
     <div class="row">
-      <div class="col col-75">
-        <label class="item item-input item-floating-label">
-        <span class="input-label">Game Time</span>
-          <input type="text" placeholder="Game Time" ng-model="vm.prettyGameTime">
-        </label>
-      </div>
-      <div class="col col-25">
-        <ionic-timepicker input-obj="timePickerObject">
-          <button class="button button-positive">
-          </button>
-        </ionic-timepicker>
-      </div>
+      <label class="col item item-input item-floating-label">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="Name" ng-model="vm.game.name">
+      </label>
     </div>
-    <label class="item item-input item-floating-label">
-      <span class="input-label">Line-Up</span>
-      <input type="text" placeholder="Line-Up">
-    </label>
-    <label class="item item-input item-floating-label">
-      <span class="input-label">Notes</span>
-        <input type="text" placeholder="Notes">
-    </label>
+    <div class="row">
+      <label class="col col-75 item item-input item-floating-label">
+        <span class="input-label">Game Date</span>
+        <input type="text" placeholder="Game Date" ng-model="vm.prettyDate">
+      </label>
+      <ionic-datepicker class="col col-25" date="vm.currentDate" min="vm.minDate" callback="vm.datePickerCallback">
+        <button class="button button-small button-positive ion-android-calendar"></button>
+      </ionic-datepicker>
+    </div>
+    <div class="row">
+      <label class="col col-75 item item-input item-floating-label">
+      <span class="input-label">Game Time</span>
+        <input type="text" placeholder="Game Time" ng-model="vm.prettyTime">
+      </label>
+      <ionic-timepicker class="col col-25" input-obj="timePickerObject">
+        <button class="button button-small button-positive ion-android-time" >
+        </button>
+      </ionic-timepicker>
+    </div>
+    <div class="row">
+      <label class="col item item-input item-floating-label">
+        <span class="input-label">Line-Up</span>
+        <input type="text" placeholder="Line-Up">
+      </label>
+    </div>
+    <div class="row">
+      <label class="col item item-input item-floating-label">
+        <span class="input-label">Notes</span>
+          <input type="text" placeholder="Notes">
+      </label>
+    </div>
     <button class="button button-balanced" ui-sref="app.gameDuring({ gameId : game.id})">Start</button>
   </ion-content>
 </ion-view>

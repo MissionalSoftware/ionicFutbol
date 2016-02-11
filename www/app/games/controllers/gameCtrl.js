@@ -32,26 +32,63 @@
   GameDetail.$inject = ['$scope', 'Games', '$stateParams'];
   function GameDetail ($scope, Games, $stateParams){
     var vm = this;
-    vm.game = Games.get($stateParams.gameId);
-    vm.prettyGameTime = '';
+    vm.game = $stateParams.gameId ? Games.get($stateParams.gameId) : Games.new();
+    vm.prettyTime = '';
+    vm.prettyDate = '';
+    vm.currentDate = '';
+    vm.currentHour = 0;
+    vm.currentMinute = 0;
+    vm.minDate = new Date(2015, 0, 1);
 
-    if (vm.game.gametime) {
-      vm.prettyGameTime = PrettyGameTime(vm.game.gametime);
+    //Date Area
+    if (vm.game.gameDate){
+      vm.currentDate = new Date(vm.game.gameDate);
+      vm.prettyDate = PrettyGameDate(vm.game.gameDate);
+      vm.prettyTime = PrettyGameTime(vm.game.gameDate);
+      vm.currentHour = vm.currentDate.getUTCHours();
+      vm.currentMinute = vm.currentDate.getUTCMinutes();
+    } else {
+      vm.currentDate = Date.now();
+    }
+
+    vm.datePickerCallback = function(val){
+      if(val){
+        val.setHours(vm.currentHour, vm.currentMinute, 0, 0);
+        vm.game.gameDate = val.toJSON();
+        vm.prettyDate = PrettyGameDate(val);
+      }
+    };
+
+    /**
+     * @return {string}
+     */
+    function PrettyGameDate(date){
+      if (date){
+        var prettyDate = new Date(date);
+        return prettyDate.toLocaleDateString();
+      }
+    }
+
+    //End Date Area
+
+    //Time Area
+
+    if (vm.game.gameDate){
+      vm.prettyTime = PrettyGameTime(vm.game.gameDate);
     }
 
     /**
      * @return {string}
      * */
-    function PrettyGameTime(epochTime){
-      if (!epochTime) return '';
-      var timePart = new Date(epochTime);
-      var prettyDate = new Date();
-      prettyDate.setHours(timePart.getUTCHours(), timePart.getUTCMinutes(), 0);
-      return prettyDate.toString();
+    function PrettyGameTime(date){
+      if (!date) return '';
+      var timePart = new Date(date);
+
+      return timePart.toLocaleTimeString();
     }
 
     $scope.timePickerObject = {
-      inputEpochTime: ((new Date()).getHours() * 60 * 60),
+      inputEpochTime: ((new Date(vm.game.gameDate)).getHours() * 60 * 60),
       step: 15,
       format: 12,
       titleLabel: '12-hour Format',
@@ -65,13 +102,18 @@
     };
 
     function timePickerCallback(val){
-      if (typeof (val) !== 'undefined'){
-        vm.game.gametime = val;
-        vm.prettyGameTime = PrettyGameTime(val);
+      if (val){
+        var tempTime = new Date(val * 1000);
+        var tempDate = new Date(vm.game.gameDate);
+        tempDate.setHours(tempTime.getUTCHours(), tempTime.getUTCMinutes(), tempTime.getUTCSeconds(), tempTime.getUTCMilliseconds());
+        vm.currentHour = tempTime.getUTCHours();
+        vm.currentMinute = tempTime.getUTCMinutes();
+        vm.game.gameDate = tempDate.toJSON();
+        vm.prettyTime = PrettyGameTime(vm.game.gameDate);
       }
     }
 
   }
-
+  //End Time Area
 
 })();

@@ -2,8 +2,9 @@
   <ion-content>
     <ion-list>
       <ion-item collection-repeat="game in vm.games" ng-click="vm.addEditGame(game.id)">
-        {{vm.localeDate(game.date)}} - {{game.name}}
+        {{game.gameDate | date:'shortDate'}} - {{game.name}}
       </ion-item>
     </ion-list>
   </ion-content>
+  <button class="round-overlay-button bottom-right assertive button button-icon icon ion-ios7-search-strong light ion-plus" ng-click="vm.addEditGame()"></button>
 </ion-view>
