@@ -1,4 +1,4 @@
-angular.module('futbol', ['ionic'])
+angular.module('futbol', ['ionic', 'ionic-datepicker', 'ionic-timepicker'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -46,7 +46,7 @@ angular.module('futbol', ['ionic'])
     url: '/gameDetail/:gameId',
     views: {
       'menuContent': {
-        templateUrl: 'app/games/templates/gameAddEdit.html',
+        templateUrl: 'app/games/templates/gameDetail.html',
         controller: 'gameDetailCtrl',
         controllerAs: 'vm'
       }

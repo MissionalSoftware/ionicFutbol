@@ -1,0 +1,35 @@
+<ion-view view-title="Add/Edit Game">
+  <ion-content>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Name</span>
+      <input type="text" placeholder="Name" ng-model="vm.game.name">
+    </label>
+    <label class="item item-input item-floating-label" pick-a-date="date">
+      <span class="input-label">Date</span>
+      <input type="text" placeholder="Game Date" ng-model="vm.game.date">{{date}}
+    </label>
+    <div class="row">
+      <div class="col col-75">
+        <label class="item item-input item-floating-label">
+        <span class="input-label">Game Time</span>
+          <input type="text" placeholder="Game Time" ng-model="vm.prettyGameTime">
+        </label>
+      </div>
+      <div class="col col-25">
+        <ionic-timepicker input-obj="timePickerObject">
+          <button class="button button-positive">
+          </button>
+        </ionic-timepicker>
+      </div>
+    </div>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Line-Up</span>
+      <input type="text" placeholder="Line-Up">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Notes</span>
+        <input type="text" placeholder="Notes">
+    </label>
+    <button class="button button-balanced" ui-sref="app.gameDuring({ gameId : game.id})">Start</button>
+  </ion-content>
+</ion-view>
