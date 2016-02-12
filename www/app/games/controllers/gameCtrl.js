@@ -39,6 +39,12 @@
     vm.currentHour = 0;
     vm.currentMinute = 0;
     vm.minDate = new Date(2015, 0, 1);
+    vm.saveGame = SaveGame;
+
+    function SaveGame(){
+      Games.save(vm.game);
+    }
+
 
     //Date Area
     if (vm.game.gameDate){

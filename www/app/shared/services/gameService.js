@@ -37,7 +37,20 @@
           return null;
         },
         new: function(){
-          return new GameVM;
+          var game = new GameVM;
+          game.id = games.length + 1;
+          return game;
+        },
+        save: function(saveGame){
+          var found = false;
+          angular.forEach(games, function(game, index){
+            if (game.id == saveGame.id){
+              found = true;
+            }
+          });
+          if (!found){
+            games.push(saveGame);
+          }
         }
       }
     });
