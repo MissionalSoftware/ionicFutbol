@@ -7,3 +7,4 @@ plugins/
 .idea/
 www/lib/jquery/
 resources/
+www/lib/lodash/

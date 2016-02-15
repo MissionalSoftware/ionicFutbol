@@ -37,6 +37,15 @@
           <input type="text" placeholder="Notes">
       </label>
     </div>
-    <button class="button button-balanced" ui-sref="app.gameDuring({ gameId : game.id})">Start</button>
+    <div class="row">
+      <div class="col col-25 col-center">
+        <button class="button button-clear button-balanced" ui-sref="app.gameDuring({ gameId : game.id})">Start</button>
+      </div>
+      <div class="col col-25 col-center col-offset-50">
+        <button class="button button-clear button-assertive pull-right" ng-click="vm.saveGame()">Save</button>
+      </div>
+    </div>
+
+
   </ion-content>
 </ion-view>
