@@ -5,19 +5,45 @@
     .controller('gamesCtrl', Games)
     .controller('gameDetailCtrl', GameDetail);
 
-  Games.$inject = ['$scope', 'Games', '$state'];
-  function Games ($scope, Games, $state){
+  Games.$inject = ['$scope', 'Games', '$state', '$ionicModal'];
+  function Games ($scope, Games, $state, $ionicModal){
     var vm = this;
     vm.games = Games.all();
-    vm.addEditGame = AddEditGame;
+    $scope.addEditGame = AddEditGame;
     vm.localeDate = LocaleDate;
+    vm.modalGame = '';
 
+    $ionicModal.fromTemplateUrl('app/games/templates/gameModalInfo.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal){
+      $scope.modal = modal;
+    });
 
+    $scope.openModal = function(gameId){
+      vm.modalGame = Games.get(gameId);
+      var modalDate = new Date(vm.modalGame.gameDate);
+      vm.modalGame.prettyDate = modalDate.toDateString();
+      vm.modalGame.prettyTime = modalDate.toTimeString();
+      $scope.modal.show();
+    };
+
+    $scope.closeModal = function(){
+      $scope.modal.hide();
+    };
+
+    $scope.$on('$destroy', function(){
+      $scope.modal.remove();
+    });
+
+    $scope.$on('modal.hidden', function(){
+      vm.modalGame = '';
+    });
 
     function AddEditGame(gameId){
+      $scope.modal.hide();
       $state.go('app.gameDetail', { gameId: gameId})
     }
-
 
     /**
      * @return {string}

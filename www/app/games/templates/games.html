@@ -1,7 +1,7 @@
 <ion-view view-title="Games">
   <ion-content>
     <ion-list>
-      <ion-item collection-repeat="game in vm.games" ng-click="vm.addEditGame(game.id)">
+      <ion-item collection-repeat="game in vm.games" ng-click="openModal(game.id)">
         {{game.gameDate | date:'shortDate'}} - {{game.name}}
       </ion-item>
     </ion-list>

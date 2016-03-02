@@ -1,17 +1,18 @@
-<div class="modal">
+<ion-modal-view>
   <div class="card">
     <div class="item item-divider">
-      {{game.name}}
+      {{vm.modalGame.name}}
     </div>
     <div class="item item-text-wrap">
-      {{game.date}}
-      {{game.location}}
+      {{vm.modalGame.prettyDate}}
+      {{vm.modalGame.prettyTime}}
     </div>
     <div class="item item-divider">
       <div class="row">
-        <div class="col col-33 col-offset-33"><button class="button button-positive" ng-click=vm.addEditGame({{game.id}})>edit</button></div>
-        <div class="col col-33"><button class="button button-balanced" ng-click="vm.closeModal()">close</button></div>
+        <div class="col col-33"><button class="button button-positive" ng-click=addEditGame({{game.id}})>edit</button></div>
+        <div class="col col-33"><button class="button button-assertive" ng-click="startGame({{game.id}})">start</button></div>
+        <div class="col col-33"><button class="button button-balanced" ng-click="closeModal()">close</button></div>
       </div>
     </div>
   </div>
-</div>
+</ion-modal-view>
