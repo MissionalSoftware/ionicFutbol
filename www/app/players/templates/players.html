@@ -1,1 +1,6 @@
-<players-list players="vm.players" on-player-click="vm.playerClick()"></players-list>
+<ion-view view-title="Players">
+  <ion-content>
+    <player-list players="vm.players" callback="vm.playerClick"></player-list>
+  </ion-content>
+</ion-view>
+

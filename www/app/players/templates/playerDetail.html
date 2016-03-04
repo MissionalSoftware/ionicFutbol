@@ -1,8 +1,19 @@
 <ion-view view-title="{{vm.player.name}}">
   <ion-content>
-    <label class="item item-input item-floating-label">
-      <span class="input-label">Name</span>
-      <input type="text" placeholder="Name" ng-model="vm.player.name">
-    </label>
+    <div class="row">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="Name" ng-model="vm.player.name">
+      </label>
+    </div>
+    <div class="row">
+      <label class="col col-75 item item-input item-floating-label">
+        <span class="input-label">DOB</span>
+        <input type="text" placeholder="Game Date" ng-model="vm.prettyDate">
+      </label>
+      <ionic-datepicker class="col col-25" date="vm.currentDate" callback="vm.playerDOB">
+        <button class="button button-small button-positive ion-android-calendar"></button>
+      </ionic-datepicker>
+    </div>
   </ion-content>
 </ion-view>
