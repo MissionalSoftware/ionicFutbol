@@ -42,7 +42,7 @@
 
     function AddEditGame(gameId){
       $scope.modal.hide();
-      $state.go('app.gameDetail', { gameId: gameId})
+      $state.go('app.games', { gameId: gameId})
     }
 
     /**

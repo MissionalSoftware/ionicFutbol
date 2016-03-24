@@ -11,7 +11,7 @@
     vm.players = Players.all();
 
     vm.playerClick = function(player){
-      $state.go('app.playerDetail', {playerId: player.id});
+      $state.go('app.players', {playerId: player.id});
     };
   }
 

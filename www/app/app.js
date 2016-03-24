@@ -43,10 +43,20 @@ angular.module('futbol', ['ionic', 'ionic-datepicker', 'ionic-timepicker'])
     }
   })
   .state('app.gameDetail', {
-    url: '/gameDetail/:gameId',
+    url: '/games/:gameId',
     views: {
       'menuContent': {
         templateUrl: 'app/games/templates/gameDetail.html',
+        controller: 'gameDetailCtrl',
+        controllerAs: 'vm'
+      }
+    }
+  })
+  .state('app.gameDuring', {
+    url: '/games/:gameId/during',
+    views: {
+      'menuContent': {
+        templateUrl: 'app/games/templates/gameDuring.html',
         controller: 'gameDetailCtrl',
         controllerAs: 'vm'
       }
@@ -63,7 +73,7 @@ angular.module('futbol', ['ionic', 'ionic-datepicker', 'ionic-timepicker'])
     }
   })
     .state('app.playerDetail', {
-      url: '/playerDetail/:playerId',
+      url: '/players/:playerId',
       views: {
         'menuContent': {
           templateUrl: 'app/players/templates/playerDetail.html',
