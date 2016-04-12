@@ -1,21 +1,21 @@
 (function(){
   'use strict';
   angular.module('futbol')
-    .controller('playersListController', PlayersListController)
-    .directive('playerList', PlayersListDirective);
+    .controller('playerListController', PlayerListController)
+    .directive('playerList', PlayerListDirective);
 
-  PlayersListController.$inject = ['$scope', 'Players', '$stateParams'];
-  function PlayersListController($scope, Players, $stateParams){
+  PlayerListController.$inject = ['$scope', 'Players', '$stateParams'];
+  function PlayerListController($scope, Players, $stateParams){
     $scope.clickedPlayer = function(player){
       $scope.callback(player);
     };
   }
 
-  function PlayersListDirective(){
+  function PlayerListDirective(){
     return {
       restrict: 'E',
       replace: true,
-      controller: PlayersListController,
+      controller: PlayerListController,
       scope: {
         players: '=',
         callback: '='
